@@ -1,39 +1,30 @@
 <script setup lang="ts">
 const props = defineProps({
   title: { type: String, required: true },
+  size: { type: String },
 });
 </script>
 
 <template>
-  <div class="md:w-[90%] m-auto py-20 w-[80%]">
+  <!-- <div class="md:w-[90%] m-auto py-20 w-[80%]"></div> -->
+  <div class="w-[100%] md:w-[60%] xl:w-[50%] text-sky-600">
     <div
       class="running ml-5 w-52 rotate-90 origin-top-left overflow-hidden text-3xl txt-black leading-normal"
     >
-      <div class="flow-txt w-[1000px] flex">
+      <div class="flow-txt w-[1000px] flex text-sky-600">
         <div>{{ title }}</div>
         <div>{{ title }}</div>
-        <!-- <div>| Intro:About Daisy</div>
-              <div>| Intro:About Daisy</div> -->
       </div>
     </div>
-    <div
-      class="w-[80%] md:w-[60%] xl:w-[50%] ml-10 -mt-14 font-serif leading-normal text-4xl"
-    >
+    <div class="ml-10 -mt-14 font-serif leading-normal" :class="[size]">
       <slot name="content"></slot>
     </div>
-    <!-- <p
-            class="w-[80%] md:w-[60%] xl:w-[50%] ml-10 -mt-14 font-serif leading-normal text-4xl"
-          >
-            Hi,my name is Daisy,<br />
-            a Designer and Front-End Developer with over 7 years of experience
-            working in Taiwan Taichung.
-          </p> -->
   </div>
 </template>
 <style scoped lang="scss">
 .flow-txt {
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-top: 2px solid #0684c7;
+  border-bottom: 2px solid #0684c7;
   > div {
     white-space: nowrap;
     animation-iteration-count: infinite;

@@ -58,22 +58,32 @@ let hoverBox: Ref<boolean> = ref(false);
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(245, 158, 11, 0.2);
+    background: rgba(245, 158, 11, 0.3);
   }
   &:first-child {
     &::before {
-      background: rgba(2, 132, 199, 0.2);
+      background: rgba(2, 132, 199, 0.3);
+      // background: linear-gradient(
+      //   43deg,
+      //   rgba(53, 251, 226, 1) 0%,
+      //   rgba(131, 185, 253, 0.5471255466472303) 53%
+      // );
     }
   }
   &:last-child {
     &::before {
-      background: rgba(132, 204, 22, 0.2);
+      background: rgba(132, 204, 22, 0.3);
+      // background: linear-gradient(
+      //   43deg,
+      //   rgba(164, 163, 249, 0.7628689868804664) 0%,
+      //   rgba(156, 225, 251, 0.5471255466472303) 53%
+      // );
     }
   }
   &.active {
     animation-name: bgflow;
-    animation-duration: 6s;
-    animation-fill-mode: forwards;
+    animation-duration: 18s;
+    animation-iteration-count: infinite;
     h4 {
       color: #000;
       transform: rotate(0) translateY(-30px) scale(1.1);
@@ -86,12 +96,12 @@ let hoverBox: Ref<boolean> = ref(false);
 }
 @keyframes bgflow {
   from {
-    background-size: 100%;
-    background-position: bottom;
+    //background-size: 100%;
+    background-position: 0% 50%;
   }
   to {
-    background-size: 130%;
-    background-position: top;
+    //background-size: 110%;
+    background-position: 100% 100%;
   }
 }
 </style>

@@ -10,7 +10,12 @@ export const routes = [
   {
     path: '/works',
     name: 'Works',
-    component: HomeView
+    component: ()=> import('../views/WorkView.vue')
+  },
+  {
+    path: '/work-detail/:id',
+    name: 'WorkDetail',
+    component: ()=> import('../views/WorkDetailView.vue')
   },
   {
     path: '/service',

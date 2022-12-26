@@ -1,13 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from "vue";
+
+onMounted(() => {
+  window.scrollTo({ top: 0 });
+});
+</script>
 
 <template>
   <div class="wrapper">
-    <div class="layer-1 fixed top-0 left-0 z-0 w-full h-full bg-lime-100"></div>
-    <div
-      class="layer-2 fixed top-0 left-0 z-10 w-full h-full bg-amber-50"
-    ></div>
+    <div class="layer-1 fixed top-0 left-0 z-0 w-full h-full bg-lime-200"></div>
+    <div class="layer-2 fixed top-0 left-0 z-0 w-full h-full bg-amber-50"></div>
 
-    <div class="wrapper-content absolute top-0 left-0 z-20 font-serif">
+    <div class="wrapper-content absolute top-0 left-0 z-20 font-serif w-full">
       <slot name="content"></slot>
     </div>
   </div>

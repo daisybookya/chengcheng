@@ -5,12 +5,43 @@
 @tailwind utilities;
 
 @layer base{
-  .w-full-vw{
-      width:100vw;
+  ::selection {
+    color: #fff;
+    background: #eab403;
+  }
+    .flow-bg {
+      animation-name: bgflow;
+      animation-duration: 24s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
     }
-    .h-full-vh{
-      height:100vh;
+    @keyframes bgflow {
+      0% {
+        background-position: 0%;
+      }
+    
+      100% {
+        background-position: 100%;
+      }
     }
+    .move-in {
+      opacity: 0;
+      animation-name: moveUp;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes moveUp {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+    
 }
 @layer components {
     .design-box {

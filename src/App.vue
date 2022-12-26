@@ -12,12 +12,12 @@ let menuOpen: Ref<boolean> = ref(false);
   <header class="w-full flex justify-between px-8 py-5 fixed top-0 left-0 z-50">
     <div class="logo font-display text-3xl italic">
       <RouterLink class="hover:text-lime-500 text-sky-700" to="/"
-        >ChengCheng Design</RouterLink
+        >CHENGCHENG <br />DESIGN</RouterLink
       >
     </div>
     <button
       @click="menuOpen = !menuOpen"
-      class="p-3 border-none rounded-full bg-sky-600 hover:bg-lime-400 transition-colors"
+      class="p-2 border-none rounded-full bg-sky-600 hover:bg-lime-400 transition-colors"
     >
       <Bars3Icon class="h-6 w-6 text-white hover:text-gray-800" />
     </button>

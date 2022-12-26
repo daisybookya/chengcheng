@@ -4,18 +4,20 @@ import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { routes } from "@/router";
 
 const emit = defineEmits(["close"]);
+const menu = routes.filter((item) => !item.name.includes("WorkDetail"));
 </script>
 <template>
   <div
-    class="menu-wrapper flex justify-center items-center fixed top-0 left-0 z-50 bg-sky-600"
+    class="menu-wrapper flex justify-center items-center fixed top-0 left-0 z-50 bg-sky-700"
   >
     <div class="box">
       <nav class="text-white flex flex-col font-display text-5xl">
         <RouterLink
-          class="hover:even:text-lime-400 hover:odd:text-amber-300 py-2"
+          class="hover:even:text-lime-400 hover:odd:text-amber-300 py-2 move-in"
+          :style="`animation-delay:${100 * index}ms`"
           @click="$emit('close')"
           :to="link.path"
-          v-for="link in routes"
+          v-for="(link, index) in menu"
           :key="link.name"
           >{{ link.name }}</RouterLink
         >

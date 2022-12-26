@@ -4,7 +4,9 @@ import LayoutVue from "@/components/Layout.vue";
 <template>
   <LayoutVue>
     <template #content>
-      <div class="contact py-16 m-auto">
+      <div
+        class="contact py-28 m-auto rounded-2xl flow-bg bg-[url(/terrazzo.webp)] bg-fixed"
+      >
         <div class="flex justify-center w-full">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSdsvXROEZDwUVeDHgC_XqvRS5OKczrfhJkp0bK5Ql2D8hVkfw/viewform?embedded=true"

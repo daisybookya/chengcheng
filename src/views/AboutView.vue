@@ -1,16 +1,81 @@
 <script setup lang="ts">
 import LayoutVue from "@/components/Layout.vue";
 import IntroVue from "@/components/Intro.vue";
-import { ref, onMounted, onBeforeMount } from "vue";
-
+import { ref, onMounted, onUnmounted } from "vue";
+interface Item {
+  ele: Element;
+  y: number;
+  color: string;
+}
 document.body.style.overflowX = "hidden";
+let eleList: Item[] = [];
+let lastKnownScrollPosition = 0;
+let ticking = false;
+let mainBox: any = null;
+onMounted(() => {
+  eleList = getEleList(".part");
+  mainBox = document.querySelector(".about");
+  document.addEventListener("scroll", scrollEvent);
+});
+function getEleList(eleId: string) {
+  if (eleId !== "" || null) {
+    let topItem = document.getElementsByClassName("about-banner")[0];
+    let topItemHeight = topItem.getBoundingClientRect().height;
+    let ele = document.querySelectorAll(eleId);
+    let firstItemY = ele[0].getBoundingClientRect().y;
+    let list: Item[] = [];
+    ele.forEach((item, index) => {
+      let itemPosY = item.getBoundingClientRect().y;
+      if (firstItemY > topItemHeight) {
+        //從首頁跳轉進來的y值跟重新整理過後的y值不一樣
+        //因為重新整理會沒算到topItemHeight的值
+        itemPosY -= topItemHeight;
+      }
+      const itemColor = item.getAttribute("data-color") || "";
+      const detail: Item = {
+        ele: item,
+        y: itemPosY,
+        color: itemColor,
+      };
+      console.log(topItemHeight, detail);
+      list.push(detail);
+    });
+    return list;
+  }
+  return [];
+}
+function listenEleShowUp(scrollPos: number, obj: number) {
+  let posAmount = 30;
+  let nowItem = eleList[obj];
+  if (scrollPos + posAmount > nowItem.y && mainBox !== null) {
+    mainBox.setAttribute("style", `background:${nowItem.color}`);
+    nowItem.ele.classList.add("active");
+  }
+}
+
+function scrollEvent(event: Event) {
+  lastKnownScrollPosition = window.scrollY;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      for (let i = 0, k = eleList.length; i < k; i++) {
+        listenEleShowUp(lastKnownScrollPosition, i);
+      }
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+}
+onUnmounted(() => {
+  document.removeEventListener("scroll", scrollEvent);
+});
 </script>
 <template>
   <LayoutVue>
     <template #content>
-      <div class="about h-full">
+      <div class="about h-full transition-all duration-1000">
         <div
-          class="flow-bg w-full flex justify-end items-center p-10 h-screen bg-[url(/design.webp)] bg-fixed"
+          class="about-banner flow-bg w-full flex justify-end items-center p-10 h-screen bg-[url(/qbkls.webp)] bg-fixed"
         >
           <h1
             class="lg:text-6xl sm:text-5xl font-bold font-display sm:leading-normal lg:leading-relaxed"
@@ -19,9 +84,8 @@ document.body.style.overflowX = "hidden";
           </h1>
         </div>
         <div
-          class="flex justify-start px-14 py-10 mt-20"
-          data-aos="zoom-in-up"
-          data-aos-offset="-50"
+          class="part flex justify-start px-14 py-10 mt-20"
+          data-color="#f0e6fc"
         >
           <IntroVue title="| Intro:About Daisy" size="text-5xl">
             <template #content>
@@ -32,9 +96,8 @@ document.body.style.overflowX = "hidden";
           </IntroVue>
         </div>
         <div
-          class="flex justify-end px-14 py-10 mt-20"
-          data-aos="zoom-in-up"
-          data-aos-offset="-220"
+          class="part flex justify-end px-14 py-10 mt-20"
+          data-color="#f7e2c6"
         >
           <IntroVue title="| Professional Skills" size="text-4xl">
             <template #content>
@@ -50,9 +113,8 @@ document.body.style.overflowX = "hidden";
           </IntroVue>
         </div>
         <div
-          class="flex justify-evenly px-14 py-10 mt-20"
-          data-aos="zoom-in-up"
-          data-aos-offset="-220"
+          class="part flex justify-evenly px-14 py-10 mt-20"
+          data-color="#def3ff"
         >
           <IntroVue title="|More about:Faith" size="text-3xl">
             <template #content>
@@ -85,6 +147,15 @@ document.body.style.overflowX = "hidden";
 </template>
 
 <style scoped lang="scss">
+.part {
+  opacity: 0;
+  transition: all ease-in 0.4s;
+  transform: scale(0.5);
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .run-txt {
   > div {
     white-space: nowrap;

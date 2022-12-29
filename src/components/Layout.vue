@@ -1,8 +1,34 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import type { Ref } from "vue";
+import { ChevronUpIcon } from "@heroicons/vue/24/solid";
+const showBack = ref(false);
+let ticking: boolean = false;
+let lastScrollPos: number = 0;
+function goBackTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function showBtnBackTop() {
+  lastScrollPos = window.scrollY;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      if (lastScrollPos > 500) {
+        showBack.value = true;
+      } else {
+        showBack.value = false;
+      }
+      ticking = false;
+    });
 
+    ticking = true;
+  }
+}
 onMounted(() => {
   window.scrollTo({ top: 0 });
+  document.addEventListener("scroll", showBtnBackTop);
+});
+onUnmounted(() => {
+  document.removeEventListener("scroll", showBtnBackTop);
 });
 </script>
 
@@ -13,6 +39,13 @@ onMounted(() => {
 
     <div class="wrapper-content absolute top-0 left-0 z-20 font-serif w-full">
       <slot name="content"></slot>
+      <div
+        v-show="showBack"
+        @click="goBackTop"
+        class="fixed right-8 bottom-5 p-2 opacity-80 bg-amber-500 cursor-pointer rounded-full hover:bg-lime-500"
+      >
+        <ChevronUpIcon class="w-5 h-5 text-white" />
+      </div>
     </div>
   </div>
 </template>

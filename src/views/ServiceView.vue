@@ -23,11 +23,11 @@ const items = [
   <LayoutVue>
     <template #content>
       <div class="service flex flex-row">
-        <template v-for="part in items" :key="part.bk">
+        <template v-for="(item, index) in items" :key="item.title + index">
           <DesignBoxVue
-            :bk="part.bk"
-            :title="part.title"
-            :intro="part.intro"
+            :bk="item.bk"
+            :title="item.title"
+            :intro="item.intro"
           ></DesignBoxVue>
         </template>
       </div>

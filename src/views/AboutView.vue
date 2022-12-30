@@ -78,9 +78,9 @@ onUnmounted(() => {
           class="about-banner flow-bg w-full flex justify-end items-center p-10 h-screen bg-[url(/qbkls.webp)] bg-fixed"
         >
           <h1
-            class="lg:text-6xl sm:text-5xl font-bold font-display sm:leading-normal lg:leading-relaxed"
+            class="text-sky-600 lg:text-8xl sm:text-5xl font-bold uppercase font-display sm:leading-normal lg:leading-relaxed"
           >
-            Shaping your Identity <br />width design and code
+            About Cheng <br />Cheng Design
           </h1>
         </div>
         <div

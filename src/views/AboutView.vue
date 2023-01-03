@@ -24,6 +24,7 @@ function getEleList(eleId: string) {
     let ele = document.querySelectorAll(eleId);
     let firstItemY = ele[0].getBoundingClientRect().y;
     let list: Item[] = [];
+    console.log(topItemHeight, firstItemY);
     ele.forEach((item, index) => {
       let itemPosY = item.getBoundingClientRect().y;
       if (firstItemY > topItemHeight) {
@@ -78,7 +79,7 @@ onUnmounted(() => {
           class="about-banner flow-bg w-full flex justify-end items-center p-10 h-screen bg-[url(/qbkls.webp)] bg-fixed"
         >
           <h1
-            class="text-sky-600 lg:text-8xl sm:text-5xl font-bold uppercase font-display sm:leading-normal lg:leading-relaxed"
+            class="text-sky-600 text-5xl md:text-6xl lg:text-8xl font-bold uppercase font-display sm:leading-normal lg:leading-relaxed"
           >
             About Cheng <br />Cheng Design
           </h1>
@@ -87,7 +88,10 @@ onUnmounted(() => {
           class="part flex justify-start px-14 py-10 mt-20"
           data-color="#f0e6fc"
         >
-          <IntroVue title="| Intro:About Daisy" size="text-5xl">
+          <IntroVue
+            title="| Intro:About Daisy"
+            size="text-3xl md:text-5xl md:leading-normal"
+          >
             <template #content>
               Hi,my name is Daisy,<br />
               a Designer and Front-End Developer with over 5 years of experience
@@ -99,7 +103,10 @@ onUnmounted(() => {
           class="part flex justify-end px-14 py-10 mt-20"
           data-color="#f7e2c6"
         >
-          <IntroVue title="| Professional Skills" size="text-4xl">
+          <IntroVue
+            title="| Professional Skills"
+            size="text-2xl md:text-4xl md:leading-normal"
+          >
             <template #content>
               <ul>
                 <li>-Javascript: Vue/React/Typescript</li>
@@ -116,7 +123,10 @@ onUnmounted(() => {
           class="part flex justify-evenly px-14 py-10 mt-20"
           data-color="#def3ff"
         >
-          <IntroVue title="|More about:Faith" size="text-3xl">
+          <IntroVue
+            title="|More about:Faith"
+            size="text-2xl md:text-4xl md:leading-normal"
+          >
             <template #content>
               <p>
                 “<i

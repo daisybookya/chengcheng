@@ -45,7 +45,7 @@
 }
 @layer components {
     .design-box {
-      @apply transition-all basis-1/3 hover:basis-4/5 px-5 duration-700;
+      @apply transition-all h-1/3 md:h-auto md:basis-1/3 md:hover:basis-4/5 px-5 duration-700;
     }
     
   }

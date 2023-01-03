@@ -1,32 +1,32 @@
 <script setup lang="ts">
 import LayoutVue from "@/components/Layout.vue";
 import { onMounted } from "vue";
-const blocks = Array.from({ length: 6 }, (x, i) => i);
+const blocks = Array.from({ length: 12 }, (x, i) => i);
 </script>
 
 <template>
   <LayoutVue>
     <template #content>
       <div class="home relative">
-        <div class="bk-box flex flex-col h-screen bg-[url(/design.webp)]">
-          <div v-for="item in blocks" class="run-bar h-1/6 overflow-hidden">
-            <div class="inner-bar w-full h-full">
-              {{ item }}
-            </div>
+        <div
+          class="bk-box flex flex-row h-screen bg-[url(/design.webp)] overflow-hidden"
+        >
+          <div v-for="item in blocks" class="run-bar w-1/12 overflow-hidden">
+            <div class="inner-bar w-full h-full"></div>
           </div>
         </div>
         <div
-          class="text-6xl md:text-8xl lg:text-8xl xl:text-9xl text-center whitespace-nowrap font-display font-light absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-center whitespace-nowrap font-display font-light absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <div class="overflow-hidden">
+          <div class="overflow-hidden title-part">
             <div class="titleMove origin-bottom leading-tight">Shaping</div>
           </div>
-          <div class="overflow-hidden">
+          <div class="overflow-hidden title-part">
             <div class="titleMove origin-bottom leading-tight">
               Identity width
             </div>
           </div>
-          <div class="overflow-hidden">
+          <div class="overflow-hidden title-part">
             <div class="titleMove origin-bottom">
               <span class="font-sans capitalize font-light leading-tight"
                 >design</span
@@ -47,39 +47,43 @@ const blocks = Array.from({ length: 6 }, (x, i) => i);
 </template>
 <style lang="scss" scoped>
 .bk-box {
-  animation: 0.6s ease-in 2.5s forwards moveSmall, 24s linear infinite bgflow;
+  animation: 0.6s ease-in 2.7s forwards moveSmall, 24s linear infinite bgflow;
 }
-.run-bar {
-  &:nth-child(even) {
-    .inner-bar {
-      background: #0684c7;
-      animation-name: moveRight;
+$max: 12;
+@for $i from 0 through $max {
+  .run-bar {
+    &:nth-child(#{$i + 1}) {
+      .inner-bar {
+        animation-delay: (0.1 * $i)+ 1.2s;
+      }
     }
   }
-  .inner-bar {
-    background: #0684c7;
-    animation-delay: 1s;
-    animation-name: moveLeft;
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
-  }
 }
+
+.inner-bar {
+  background: #0684c7;
+  animation-delay: 1s;
+  animation-name: moveRight;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes moveLeft {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   100% {
-    transform: translateX(-101%);
+    transform: translateY(-101%);
   }
 }
 @keyframes moveRight {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   100% {
-    transform: translateX(101%);
+    transform: translateY(101%);
   }
 }
 @keyframes moveSmall {
@@ -93,13 +97,26 @@ const blocks = Array.from({ length: 6 }, (x, i) => i);
     border-radius: 100vh;
   }
 }
+
 .titleMove {
   transform: translateY(100%);
   animation-delay: 3s;
   animation-name: moveUp;
-  animation-duration: 1s;
+  animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
+}
+.title-part {
+  &:nth-child(2) {
+    .titleMove {
+      animation-delay: 3.2s;
+    }
+  }
+  &:nth-child(3) {
+    .titleMove {
+      animation-delay: 3.4s;
+    }
+  }
 }
 @keyframes moveUp {
   0% {

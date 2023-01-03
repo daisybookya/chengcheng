@@ -30,7 +30,7 @@ let hoverBox: Ref<boolean> = ref(false);
     <div class="text-center">
       <h4
         :class="[
-          'text-3xl text-gray-700 font-serif font-bold rotate-90 transition-all duration-300',
+          'text-3xl text-gray-700 font-serif font-bold break-words rotate-90 translate-y-10 transition-all duration-300',
         ]"
       >
         {{ title }}

@@ -22,7 +22,7 @@ const items = [
 <template>
   <LayoutVue>
     <template #content>
-      <div class="service flex flex-row">
+      <div class="service flex flex-col md:flex-row">
         <template v-for="(item, index) in items" :key="item.title + index">
           <DesignBoxVue
             :bk="item.bk"

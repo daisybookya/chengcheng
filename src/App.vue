@@ -10,7 +10,7 @@ let menuOpen: Ref<boolean> = ref(false);
 
 <template>
   <header class="w-full flex justify-between px-8 py-5 fixed top-0 left-0 z-50">
-    <div class="logo font-display text-3xl italic">
+    <div class="logo font-display text-2xl lg:text-3xl italic">
       <RouterLink class="hover:text-lime-500 text-sky-700" to="/"
         >CHENGCHENG <br />DESIGN</RouterLink
       >

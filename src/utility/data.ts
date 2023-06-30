@@ -15,6 +15,13 @@ const getAssetsFile = (url: string) => {
 //兩種寫法：Cover[] 或 Array<Cover>
 export const coverList: Cover[]= [
   {
+    img:`${getAssetsFile('cover_money.jpg')}`,
+    title:'借貸企業',
+    type:'網頁設計',
+    subColor:'#f9872a',
+    imglist:[`${getAssetsFile('index_money.jpg')}`]
+  },
+  {
     img:`${getAssetsFile('cover_plants02.jpg')}`,
     title:'園藝植栽',
     type:'網頁設計',

@@ -7,7 +7,7 @@ const blocks = Array.from({ length: 12 }, (x, i) => i);
 <template>
   <LayoutVue>
     <template #content>
-      <div class="home relative">
+      <div class="home relative bg-stone-300">
         <div
           class="bk-box flex flex-row h-screen bg-[url(/design.webp)] overflow-hidden"
         >
@@ -93,7 +93,7 @@ $max: 12;
   }
 
   100% {
-    transform: scale(0.7);
+    transform: scale(0.9);
     border-radius: 100vh;
   }
 }

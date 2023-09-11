@@ -8,12 +8,12 @@ const menu = routes.filter((item) => !item.name.includes("WorkDetail"));
 </script>
 <template>
   <div
-    class="menu-wrapper move-scale flex justify-center items-center fixed top-0 left-0 z-50 bg-sky-700"
+    class="menu-wrapper move-scale flex justify-center items-center fixed top-0 left-0 z-50 bg-stone-700"
   >
     <div class="box">
       <nav class="text-white flex flex-col font-display text-5xl">
         <RouterLink
-          class="hover:even:text-lime-400 hover:odd:text-amber-300 py-2 move-in"
+          class="hover:text-sky-500 py-4 move-in"
           :style="`animation-delay:${150 * index}ms`"
           @click="$emit('close')"
           :to="link.path"
@@ -24,7 +24,7 @@ const menu = routes.filter((item) => !item.name.includes("WorkDetail"));
       </nav>
       <button class="absolute top-5 right-5" @click="$emit('close')">
         <XMarkIcon
-          class="h-12 w-12 text-white transition-all hover:text-amber-300 hover:rotate-90"
+          class="h-12 w-12 text-white transition-all hover:text-sky-500 hover:rotate-90"
         />
       </button>
     </div>

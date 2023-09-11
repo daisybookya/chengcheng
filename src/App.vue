@@ -11,15 +11,15 @@ let menuOpen: Ref<boolean> = ref(false);
 <template>
   <header class="w-full flex justify-between px-8 py-5 fixed top-0 left-0 z-50">
     <div class="logo font-display text-2xl lg:text-3xl italic">
-      <RouterLink class="hover:text-lime-500 text-sky-700" to="/"
-        >CHENGCHENG <br />DESIGN</RouterLink
+      <RouterLink class="hover:text-stone-400 text-stone-600" to="/"
+        >CHENG <br />DESIGN</RouterLink
       >
     </div>
     <button
       @click="menuOpen = !menuOpen"
-      class="p-2 border-none rounded-full bg-sky-600 hover:bg-lime-400 transition-colors"
+      class="p-2 border-none rounded-full bg-sky-600 hover:bg-sky-400 transition-colors"
     >
-      <Bars3Icon class="h-6 w-6 text-white hover:text-gray-800" />
+      <Bars3Icon class="h-6 w-6 text-white" />
     </button>
   </header>
   <Menu v-show="menuOpen" @close="menuOpen = false"></Menu>

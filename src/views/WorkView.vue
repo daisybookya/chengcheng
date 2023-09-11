@@ -76,7 +76,7 @@ onUnmounted(() => {
         class="work h-screen w-screen flex justify-center md:items-center relative overflow-x-hidden md:overfloiw-auto"
       >
         <div
-          class="projects-list md:flex flex-wrap md:flex-nowrap md:overflow-hidden"
+          class="projects-list pt-20 md:pt-0 md:flex flex-wrap md:flex-nowrap md:overflow-hidden"
         >
           <div
             v-for="(item, index) in coverList"
@@ -85,7 +85,7 @@ onUnmounted(() => {
           >
             <div
               @click="viewWrokDetail(index)"
-              class="cover-box w-96 md:w-80 move-in"
+              class="cover-box w-96 md:w-96 move-in"
               :style="`background:${item.subColor}; animation-delay:${
                 1000 + 200 * index
               }ms;`"
@@ -93,7 +93,7 @@ onUnmounted(() => {
               <img
                 :src="item.img"
                 @load="loadWorkImg"
-                class="s-work hover:opacity-60 w-full h-auto transition-all duration-[2000ms]"
+                class="s-work w-full h-auto transition-all duration-[500ms]"
               />
             </div>
           </div>
@@ -101,17 +101,21 @@ onUnmounted(() => {
         <div
           v-show="!(scrollXPos <= 0)"
           @click="moveList('right')"
-          class="backdrop-blur-sm bg-white/30 hover:bg-lime-400 hover:opacity-70 -translate-y-1/2 absolute top-[50vh] py-10 pr-5 pl-1 rounded-r-full cursor-pointer left-0 z-10 transition-all duration-500"
+          class="hidden md:block backdrop-blur-sm bg-white/30 hover:bg-lime-400 hover:opacity-70 -translate-y-1/2 absolute top-[50vh] rounded-r-full cursor-pointer left-0 z-10 transition-all duration-500"
         >
-          <ChevronDoubleLeftIcon class="w-5 h-5 text-black" />
+          <span class="px-5 py-10 block"
+            ><ChevronDoubleLeftIcon class="w-5 h-5 text-black"
+          /></span>
         </div>
 
         <div
           v-show="scrollXPos < maxPos"
           @click="moveList('left')"
-          class="backdrop-blur-sm bg-white/30 hover:bg-lime-400 hover:opacity-70 -translate-y-1/2 absolute top-[50vh] py-10 pr-5 pl-1 rounded-l-full cursor-pointer right-0 z-10 transition-all duration-500"
+          class="hidden md:block backdrop-blur-sm text-center bg-white/30 hover:bg-lime-400 hover:opacity-70 -translate-y-1/2 absolute top-[50vh] rounded-l-full cursor-pointer right-0 z-10 transition-all duration-500"
         >
-          <ChevronDoubleRightIcon class="w-5 h-5 text-black" />
+          <span class="px-5 py-10 block"
+            ><ChevronDoubleRightIcon class="w-5 h-5 text-black"
+          /></span>
         </div>
       </div>
     </template>
@@ -124,8 +128,12 @@ onUnmounted(() => {
   opacity: 0;
   filter: blur(10px);
   &.done {
-    opacity: 1;
-    filter: blur(0px);
+    opacity: 0.7;
+    filter: blur(1px);
+    &:hover {
+      opacity: 1;
+      filter: blur(0);
+    }
   }
 }
 </style>

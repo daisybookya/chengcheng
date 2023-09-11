@@ -34,15 +34,19 @@ onUnmounted(() => {
 
 <template>
   <div class="wrapper">
-    <div class="layer-1 fixed top-0 left-0 z-0 w-full h-full bg-lime-200"></div>
-    <div class="layer-2 fixed top-0 left-0 z-0 w-full h-full bg-amber-50"></div>
+    <div
+      class="layer-1 fixed top-0 left-0 z-0 w-full h-full bg-stone-200"
+    ></div>
+    <div
+      class="layer-2 fixed top-0 left-0 z-0 w-full h-full bg-stone-100"
+    ></div>
 
     <div class="wrapper-content absolute top-0 left-0 z-20 font-serif w-full">
       <slot name="content"></slot>
       <div
         v-show="showBack"
         @click="goBackTop"
-        class="fixed right-8 bottom-5 p-2 opacity-80 bg-amber-500 cursor-pointer rounded-full hover:bg-lime-500"
+        class="fixed right-8 bottom-5 p-2 opacity-80 bg-stone-300 cursor-pointer rounded-full hover:bg-stone-500"
       >
         <ChevronUpIcon class="w-5 h-5 text-white" />
       </div>

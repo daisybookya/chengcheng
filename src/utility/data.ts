@@ -3,6 +3,7 @@ interface Cover {
   title: string,
   type: string,
   subColor: string,
+  description:string,
   imglist:string[],
 }
 const imgPath:string = './'; //圖片網址開頭
@@ -19,77 +20,100 @@ export const coverList: Cover[]= [
     title:'借貸企業',
     type:'網頁設計',
     subColor:'#f9872a',
-    imglist:[`${getAssetsFile('index_money.jpg')}`]
+    description:`選自企業Logo摘選出主要對比色藍、橘為網站主要色系，
+    以藍色象徵公司企業可信任、安心、充滿穩定，搭配橘色代表活力、迅速、親切，
+    營造網站整體現代感、快速有效借貸的氛圍，凸顯與同行競爭網站的不同，
+    並以顏色大區塊分區讓客戶能夠一目了然、清楚找到想要搜索的資訊。`,
+    imglist:[`${getAssetsFile('index_lend_review.jpg')}`,`${getAssetsFile('index_money.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_plants02.jpg')}`,
     title:'園藝植栽',
     type:'網頁設計',
-    subColor:'#abc85d',
-    imglist:[`${getAssetsFile('index_plants01.jpg')}`]
+    subColor:'#adc66a',
+    description:`園藝店通常通過門市現場銷售，網站沒有時常更新的需求，更新頻率較高的是門市活動宣傳，
+    因此首頁採用多張圖片輪播的方式，讓使用者能及時得知店內活動訊息，其餘內容則採用一頁式的方式，並以各種不同類型的植物凸顯做視覺上的串連，
+    在觀看的同時感覺被植物環繞，整體呈現清透、療癒的植物形象。`,
+    imglist:[`${getAssetsFile('index_plants01_review.jpg')}`,`${getAssetsFile('index_plants01.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_plants01.jpg')}`,
     title:'花藝植栽',
     type:'網頁設計',
-    subColor:'#037f4a',
-    imglist:[`${getAssetsFile('flower.jpg')}`]
+    subColor:'#34a776',
+    description:`客層多為年經族群，常結合文創市集開辦活動，網站集結店內與線上的宣傳需要頻繁更新消息，
+    因此置放在首頁意象圖下方，其他部分則以一頁式的方式集結在下方區塊，讓客人快速找到店家的服務項目與位址。`,
+    imglist:[`${getAssetsFile('index_flower_review.jpg')}`,`${getAssetsFile('flower.jpg')}`]
 
   },
   {
     img:`${getAssetsFile('cover_client.jpg')}`,
     title:'牙醫診所',
     type:'網頁設計',
-    subColor:'#164b75',
-    imglist:[`${getAssetsFile('index_client.jpg')}`]
+    subColor:'#3776a8',
+    description:`網站的醫療資訊非常豐富，且診所有兩家位址，為了避免病患混淆兩間診所，
+    在形象圖下方清楚呈現兩間診所的電話地址與當前診號，方便病患即時掛號與查詢，往下滑就可快速看到兩間診所的門診時刻與最新消息。
+    在下方則針對初次來到診所的患者，提供診所的服務項目與環境介紹。`,
+    imglist:[`${getAssetsFile('index_client_review.jpg')}`,`${getAssetsFile('index_client.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_textile.jpg')}`,
     title:'布料企業',
     type:'網頁設計',
-    subColor:'#0d308f',
-    imglist:[`${getAssetsFile('index_textile.jpg')}`]
+    subColor:'#3e5fb8',
+    description:`以大張細緻的布料紋理重點呈現產品質感與專業形象，網站主調色則取用企業Logo配色-藍色，
+    首頁下的幾個區塊則呈現公司優勢為主，分別為產品一條龍-織/染/設計、公司歷史悠久經驗豐富、各類合作夥伴的信任，
+    而公司的最新消息不常更新，因此置放在最下方。`,
+    imglist:[`${getAssetsFile('index_textile_review.jpg')}`,`${getAssetsFile('index_textile.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_cake2.jpg')}`,
     title:'甜點蛋糕',
     type:'網頁設計',
-    subColor:'#53290b',
-    imglist:[`${getAssetsFile('index_cake2.jpg')}`]
+    subColor:'#8a5d3d',
+    description:'以原有的logo配色作為網站的主調色，增加線上與線下的整體識別性。由於商品時常銷售一空造成訂單額滿的情況，需要告知消費者訂單的即時資訊，因此最新消息直接以跑馬燈形式放在首頁。',
+    imglist:[`${getAssetsFile('index_cake2_review.jpg')}`,`${getAssetsFile('index_cake2.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_cake.jpg')}`,
     title:'甜點蛋糕',
     type:'網頁設計',
-    subColor:'#333333',
-    imglist:[`${getAssetsFile('index_cake.jpg')}`]
+    subColor:'#656060',
+    description:'以巧克力的黑與咖啡色為主調的巧克力甜點品牌',
+    imglist:[`${getAssetsFile('index_cake_review.jpg')}`,`${getAssetsFile('index_cake.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_food.jpg')}`,
     title:'素食餐飲',
     type:'網頁設計',
-    subColor:'#1e8a1a',
-    imglist:[`${getAssetsFile('index_food.jpg')}`]
+    subColor:'#4fa64c',
+    description:'結合插畫與寫實照片融合的暖系風格，希望營造溫暖、貼近人心的素食平價餐廳。',
+    imglist:[`${getAssetsFile('index_vegs_review.jpg')}`,`${getAssetsFile('index_food.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_tanpopo.jpg')}`,
     title:'手作布包',
     type:'Logo識別設計',
-    subColor:'#a87532',
+    subColor:'#a48359',
+    description:'以棉花糖的蓬鬆感線條，搭配可愛詼諧的表情熊頭為主要品牌識別logo。',
     imglist:[`${getAssetsFile('design_concept.jpg')}`,`${getAssetsFile('design_concept2.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_healing.jpg')}`,
     title:'手作耳環',
     type:'Logo識別設計',
-    subColor:'#045357',
+    subColor:'#257276',
+    description:`即使生活有許多不順心的事，還是能夠找到讓內心感到美好的事物，那些美好就像照進黑暗中的光線，圓滿了我們不完美的人生。`
+    ,
     imglist:[`${getAssetsFile('logo_design_concept.jpg')}`,`${getAssetsFile('logo_design_concept2.jpg')}`]
   },
   {
     img:`${getAssetsFile('cover_award.jpg')}`,
     title:'設計競賽',
     type:'Logo識別設計',
-    subColor:'#e6b907',
+    subColor:'#d1b64b',
+    description:`2013台北設計獎logo競賽-銀獎。用幾何圖形三角形作為圖案基底，代表設計的基本，再組成台北的『北』字，以北字象徵台北獨有的設計獎，
+    色調上以金色的不同顏色層次呈現此獎的榮譽。`,
     imglist:[`${getAssetsFile('taipei_08.jpg')}`,`${getAssetsFile('taipei_03.jpg')}`,`${getAssetsFile('taipei_05.jpg')}`]
   },
 ]

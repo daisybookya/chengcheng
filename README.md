@@ -4,6 +4,7 @@
 
 [webLink](https://daisybookya.github.io/chengcheng/)
 
+
 ### 基本功能
 
 * 網站提供設計作品集、服務項目、關於我、聯繫表單等內容
@@ -12,6 +13,10 @@
 ### 工具使用
 
 Vue3  + vue-router + vite + tailwindcss + scss + typescript
+
+## 版本更新
+
+ver 1.5 更改整體配色與修改about設計
 
 
 ## Recommended IDE Setup

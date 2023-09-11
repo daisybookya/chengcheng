@@ -17,11 +17,11 @@ export const routes = [
     name: 'WorkDetail',
     component: ()=> import('../views/WorkDetailView.vue')
   },
-  {
-    path: '/service',
-    name: 'Service',
-    component: () => import('../views/ServiceView.vue')
-  },
+  // {
+  //   path: '/service',
+  //   name: 'Service',
+  //   component: () => import('../views/ServiceView.vue')
+  // },
   {
     path: '/about',
     name: 'About',
@@ -30,11 +30,11 @@ export const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../views/AboutView.vue')
   },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: () => import('../views/ContactView.vue')
-  },
+  // {
+  //   path: '/contact',
+  //   name: 'Contact',
+  //   component: () => import('../views/ContactView.vue')
+  // },
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

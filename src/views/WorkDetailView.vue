@@ -37,55 +37,26 @@ onMounted(() => {});
 <template>
   <LayoutVue>
     <template #content>
-      <div
-        class="work-detail pt-28 flex flex-col-reverse items-start md:flex-row"
-      >
+      <div class="work-detail pt-28 flex flex-col">
         <div
-          :style="`animation-delay:700ms;background:${coverList[workId].subColor}`"
-          class="move-in basis-full w-full md:w-auto mt-10 md:mt-0 md:basis-3/12 lg:basis-1/5 flex flex-row md:flex-col"
+          class="move-in w-[90%] xl:w-[1000px] flex flex-col sm:flex-row m-auto my-5"
         >
-          <div class="p-8 text-white basis-2/3 md:basis-auto">
+          <div
+            class="py-5 px-8 text-stone-600 basis-1/4 border-r-0 sm:border-r"
+          >
             <p class="text-sm move-in">-產業類別</p>
-            <p class="text-xl py-3 move-in">{{ coverList[workId].title }}</p>
-            <p class="text-sm py-5 move-in">-設計項目</p>
-            <p class="text-xl move-in">{{ coverList[workId].type }}</p>
+            <p class="text-lg py-1 pb-5 move-in">
+              {{ coverList[workId].title }}
+            </p>
+            <p class="text-sm py-1 move-in">-設計項目</p>
+            <p class="text-lg move-in">{{ coverList[workId].type }}</p>
           </div>
-          <template v-if="coverList[nextId]">
-            <div
-              @click="goPage(nextId)"
-              :style="`background:${coverList[nextId].subColor}`"
-              class="hover:opacity-70 w-full px-8 py-5 basis-1/3 md:basis-auto cursor-pointer"
-            >
-              <p
-                class="text-xl text-white move-in"
-                :style="`animation-delay:2000ms`"
-              >
-                NEXT<span class="align-sub mr-2 inline-block"
-                  ><ArrowSmallRightIcon class="w-5 h-5" /></span
-                ><span class="text-xl py-3 block md:inline-block">{{
-                  coverList[nextId].title
-                }}</span>
-              </p>
-            </div>
-          </template>
-          <template v-else>
-            <div
-              @click="goPage(-1)"
-              class="bg-sky-600 hover:opacity-70 w-full px-8 py-5 basis-1/3 md:basis-auto cursor-pointer"
-            >
-              <p
-                class="text-xl text-white move-in"
-                :style="`animation-delay:2000ms`"
-              >
-                BACK<span class="align-sub mr-2 inline-block"
-                  ><ArrowSmallRightIcon class="w-5 h-5" /></span
-                ><span class="text-xl py-3 block md:inline-block">目錄頁</span>
-              </p>
-            </div>
-          </template>
+          <div class="basis-3/4 py-5 px-8 text-stone-600 leading-8 move-in">
+            {{ coverList[workId].description }}
+          </div>
         </div>
-        <div class="basis-full md:basis-9/12 lg:basis-4/5 text-center px-8">
-          <p v-show="isloading" class="text-sky-700 py-5">
+        <div class="basis-full text-center px-8">
+          <p v-show="isloading" class="text-sky-700 py-10">
             <span class="align-sub inline-block"
               ><ArrowPathIcon class="w-5 h-5 animate-spin mr-5" /></span
             >Loading Images...
@@ -95,8 +66,35 @@ onMounted(() => {});
             @load="loadWorkImg"
             :src="path"
             :style="`animation-delay:1200ms`"
-            class="xl-work max-fit m-auto transition-all duration-[2000ms] move-in"
+            class="xl-work max-fit m-auto my-5 transition-all duration-[2000ms] move-in"
           />
+        </div>
+        <div class="basis-full bg-white md-0 md:mt-8 flex flex-row">
+          <div
+            @click="goPage(-1)"
+            class="hover:opacity-70 w-full px-8 py-5 md:py-1 basis-auto cursor-pointer text-center"
+          >
+            <p class="text-xl text-stone-600 move-in">
+              BACK<span class="align-sub mr-2 inline-block"
+                ><ArrowSmallRightIcon class="w-5 h-5" /></span
+              ><span class="text-xl py-3 block md:inline-block">作品目錄</span>
+            </p>
+          </div>
+          <template v-if="coverList[nextId]">
+            <div
+              @click="goPage(nextId)"
+              :style="`background:${coverList[nextId].subColor}`"
+              class="hover:opacity-70 px-8 py-5 md:py-1 w-full basis-auto cursor-pointer text-center"
+            >
+              <p class="text-xl text-white move-in">
+                NEXT<span class="align-sub mr-2 inline-block"
+                  ><ArrowSmallRightIcon class="w-5 h-5" /></span
+                ><span class="text-xl py-3 block md:inline-block">{{
+                  coverList[nextId].title
+                }}</span>
+              </p>
+            </div>
+          </template>
         </div>
       </div>
     </template>

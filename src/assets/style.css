@@ -7,7 +7,7 @@
 @layer base{
   ::selection {
     color: #fff;
-    background: #eab403;
+    background: #0684c7;
   }
     .flow-bg {
       animation-name: bgflow;

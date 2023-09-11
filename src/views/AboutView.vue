@@ -1,92 +1,65 @@
 <script setup lang="ts">
 import LayoutVue from "@/components/Layout.vue";
 import IntroVue from "@/components/Intro.vue";
-import { ref, onMounted, onUnmounted } from "vue";
-interface Item {
-  ele: Element;
-  y: number;
-  color: string;
-}
-document.body.style.overflowX = "hidden";
-let eleList: Item[] = [];
-let lastKnownScrollPosition = 0;
-let ticking = false;
-let mainBox: any = null;
-onMounted(() => {
-  eleList = getEleList(".part");
-  mainBox = document.querySelector(".about");
-  document.addEventListener("scroll", scrollEvent);
-});
-function getEleList(eleId: string) {
-  if (eleId !== "" || null) {
-    let topItem = document.getElementsByClassName("about-banner")[0];
-    let topItemHeight = topItem.getBoundingClientRect().height;
-    let ele = document.querySelectorAll(eleId);
-    let firstItemY = ele[0].getBoundingClientRect().y;
-    let list: Item[] = [];
-    console.log(topItemHeight, firstItemY);
-    ele.forEach((item, index) => {
-      let itemPosY = item.getBoundingClientRect().y;
-      if (firstItemY > topItemHeight) {
-        //從首頁跳轉進來的y值跟重新整理過後的y值不一樣
-        //因為重新整理會沒算到topItemHeight的值
-        itemPosY -= topItemHeight;
-      }
-      const itemColor = item.getAttribute("data-color") || "";
-      const detail: Item = {
-        ele: item,
-        y: itemPosY,
-        color: itemColor,
-      };
-      console.log(topItemHeight, detail);
-      list.push(detail);
-    });
-    return list;
-  }
-  return [];
-}
-function listenEleShowUp(scrollPos: number, obj: number) {
-  let posAmount = 30;
-  let nowItem = eleList[obj];
-  if (scrollPos + posAmount > nowItem.y && mainBox !== null) {
-    mainBox.setAttribute("style", `background:${nowItem.color}`);
-    nowItem.ele.classList.add("active");
-  }
-}
-
-function scrollEvent(event: Event) {
-  lastKnownScrollPosition = window.scrollY;
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      for (let i = 0, k = eleList.length; i < k; i++) {
-        listenEleShowUp(lastKnownScrollPosition, i);
-      }
-      ticking = false;
-    });
-
-    ticking = true;
-  }
-}
-onUnmounted(() => {
-  document.removeEventListener("scroll", scrollEvent);
-});
+import { HandRaisedIcon } from "@heroicons/vue/24/solid";
 </script>
 <template>
   <LayoutVue>
     <template #content>
-      <div class="about h-full transition-all duration-1000">
+      <div
+        class="about h-full flow-bg w-full flex justify-center items-center p-5 md:p-10 h-screen bg-[url(/qbkls.webp)] bg-fixed transition-all duration-1000"
+      >
         <div
-          class="about-banner flow-bg w-full flex justify-end items-center p-10 h-screen bg-[url(/qbkls.webp)] bg-fixed"
+          class="flex w-[90%] sm:w-[80%] md:w-[90%] lg:w-4/5 h-4/5 py-0 md:py-10 flex-col md:flex-row bg-stone-300 rounded-3xl md:rounded-full"
         >
-          <h1
-            class="text-sky-600 text-5xl md:text-6xl lg:text-8xl font-bold uppercase font-display sm:leading-normal lg:leading-relaxed"
+          <div
+            class="basis-2/5 sm:basis-auto md:basis-1/2 border-b md:border-b-0 md:border-r flex items-center justify-center"
           >
-            About Cheng <br />Cheng Design
-          </h1>
+            <div
+              class="basis-10/12 pl-2 py-6 md:py-0 text-stone-800 font-display text-base lg:text-lg"
+            >
+              <span class="hidden md:block"
+                ><HandRaisedIcon class="w-7 h-7 mb-2 text-stone-500"
+              /></span>
+              Hi,my name is Daisy,<br />
+              a Designer and Front-End Developer with over 5 years of experience
+              working in Taiwan Taichung.
+            </div>
+          </div>
+          <div
+            class="basis-3/5 sm:basis-auto md:basis-1/2 flex items-center justify-center"
+          >
+            <div
+              class="p-10 py-3 md:py-0 flex flex-col sm:flex-row md:flex-col basis-atuo sm:basis-full md:basis-auto"
+            >
+              <div class="basis-atuo sm:basis-1/2 md:basis-auto">
+                <h3
+                  class="text-xl lg:text-2xl py-1 lg:py-3 font-display text-stone-600"
+                >
+                  What can i do for you:
+                </h3>
+                <ul
+                  class="text-stone-800 list-disc list-inside leading-relaxed mb-2 lg:mb-5"
+                >
+                  <li>Web design / UIUX</li>
+                  <li>Brand identity</li>
+                  <li>Graphic design</li>
+                </ul>
+              </div>
+              <div class="basis-atuo sm:basis-1/2 md:basis-auto">
+                <h3
+                  class="text-xl lg:text-2xl py-1 lg:py-3 font-display text-stone-600"
+                >
+                  Contact Daisy:
+                </h3>
+                E-mail : daisybookya@gmail.com
+              </div>
+            </div>
+          </div>
         </div>
-        <div
+      </div>
+      <!-- <div
           class="part flex justify-start px-14 py-10 mt-20"
-          data-color="#f0e6fc"
         >
           <IntroVue
             title="| Intro:About Daisy"
@@ -98,57 +71,17 @@ onUnmounted(() => {
               working in Taiwan Taichung.
             </template>
           </IntroVue>
-        </div>
+        </div> -->
+
+      <div class="m-auto overflow-hidden w-screen">
         <div
-          class="part flex justify-end px-14 py-10 mt-20"
-          data-color="#f7e2c6"
+          class="run-txt hover:text-sky-400 text-2xl md:text-4xl text-white bg-stone-500 flex leading-normal"
         >
-          <IntroVue
-            title="| Professional Skills"
-            size="text-2xl md:text-4xl md:leading-normal"
-          >
-            <template #content>
-              <ul>
-                <li>-Javascript: Vue/React/Typescript</li>
-                <li>-Css:scss/less/tailwindcss</li>
-                <li>-UI framework:Ant Design/Boostrap/Vuetify</li>
-                <li>-git/github</li>
-                <li>-photoshop</li>
-                <li>-illustrator</li>
-              </ul>
-            </template>
-          </IntroVue>
-        </div>
-        <div
-          class="part flex justify-evenly px-14 py-10 mt-20"
-          data-color="#def3ff"
-        >
-          <IntroVue
-            title="|More about:Faith"
-            size="text-2xl md:text-4xl md:leading-normal"
-          >
-            <template #content>
-              <p>
-                “<i
-                  >A SPARK IS YOUR MEANINGS OF LIFE, YOUR PASSIONS, YOUR
-                  PURPOSES, ISN‘T A SOUL’S PURPOSE.</i
-                >” From film "Soul"<br />
-                I hope I can help you complete a spark in your life and bring
-                more good things.
-              </p>
-            </template>
-          </IntroVue>
-        </div>
-        <div class="m-auto py-24 overflow-hidden w-screen">
-          <div
-            class="run-txt hover:text-sky-600 text-5xl text-white bg-lime-500 flex leading-normal h-20"
-          >
-            <div>
-              Let's get Started.Contact Dasiy!Let's get Started.Contact Dasiy!
-            </div>
-            <div>
-              Let's get Started.Contact Dasiy!Let's get Started.Contact Dasiy!
-            </div>
+          <div>
+            Let's get Started.Contact Dasiy! Let's get Started.Contact Dasiy!
+          </div>
+          <div>
+            Let's get Started.Contact Dasiy! Let's get Started.Contact Dasiy!
           </div>
         </div>
       </div>

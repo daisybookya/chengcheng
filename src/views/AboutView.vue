@@ -13,7 +13,7 @@ import { HandRaisedIcon } from "@heroicons/vue/24/solid";
           class="flex w-[90%] sm:w-[80%] md:w-[90%] lg:w-4/5 h-4/5 py-0 md:py-10 flex-col md:flex-row bg-stone-300 rounded-3xl md:rounded-full"
         >
           <div
-            class="basis-2/5 sm:basis-auto md:basis-1/2 border-b md:border-b-0 md:border-r flex items-center justify-center"
+            class="basis-2/5 sm:basis-auto md:basis-1/2 border-b md:border-b-0 md:border-r flex items-center justify-center justify-end"
           >
             <div
               class="basis-10/12 pl-2 py-6 md:py-0 text-stone-800 font-display text-base lg:text-lg"
@@ -27,7 +27,7 @@ import { HandRaisedIcon } from "@heroicons/vue/24/solid";
             </div>
           </div>
           <div
-            class="basis-3/5 sm:basis-auto md:basis-1/2 flex items-center justify-center"
+            class="basis-3/5 sm:basis-auto md:basis-1/2 flex items-center justify-center md:justify-between"
           >
             <div
               class="p-10 py-3 md:py-0 flex flex-col sm:flex-row md:flex-col basis-atuo sm:basis-full md:basis-auto"

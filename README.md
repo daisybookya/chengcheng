@@ -16,7 +16,7 @@ Vue3  + vue-router + vite + tailwindcss + scss + typescript
 
 ## 版本更新
 
-ver 1.5 更改整體配色與修改about設計
+ver 1.5 更改整體配色與修改about設計/新增作品大圖
 
 
 ## Recommended IDE Setup

@@ -51,7 +51,9 @@ onMounted(() => {});
             <p class="text-sm py-1 move-in">-設計項目</p>
             <p class="text-lg move-in">{{ coverList[workId].type }}</p>
           </div>
-          <div class="basis-3/4 py-5 px-8 text-stone-600 leading-8 move-in">
+          <div
+            class="basis-3/4 text-lg py-5 px-8 text-stone-600 leading-8 move-in"
+          >
             {{ coverList[workId].description }}
           </div>
         </div>
